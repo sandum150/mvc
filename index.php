@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alexandrumoldovanu-pc
- * Date: 8/25/15
- * Time: 9:46 AM
- */ 
+
+//use an autoloader
+require 'libs/Bootstrap.php';
+require 'libs/Controller.php';
+require 'libs/View.php';
+require 'libs/Model.php';
+
+$app = new Bootstrap();
