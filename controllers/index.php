@@ -2,6 +2,13 @@
     class Index extends Controller{
         function __construct(){
             parent::__construct();
-            echo 'We are in index.php<br/>';
+        }
+        function index(){
+            echo 'INSODE INDEX INDEX';
+            $this->view->render('index/index');
+        }
+
+        function details(){
+            $this->view->render('index/index');
         }
     }

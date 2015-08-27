@@ -1,0 +1,18 @@
+body{
+    background: silver;
+}
+
+#header{
+    padding: 20px;
+    background: gold;
+}
+
+#content{
+    padding: 20px;
+    background: white;
+}
+
+#footer{
+    padding: 20px;
+    background: green;
+}
