@@ -8,19 +8,20 @@ class Bootstrap
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
-//        print_r($url);
+        print_r($url);
 
         if (empty($url[0])){
-            require 'controllers/index.php';
+            require_once 'controllers/index.php';
             $controller = new Index();
+            $controller->index();
             return false;
         }
 
         $file = 'controllers/' . $url[0] . '.php';
         if(file_exists($file)){
-            require $file;
+            require_once $file;
         }else{
-            require 'controllers/error.php';
+            require_once 'controllers/error.php';
             $controller = new Error();
             $controller->index();
             return false;
@@ -28,8 +29,28 @@ class Bootstrap
 
         $controller = new  $url[0];
 //calling methods
-        if (isset($url[2])) {
-            if (method_exists($controller, $url[2])){
+        if (isset($url[0])){
+            if(isset($url[1])){
+                if(method_exists($controller, $url[1])){
+                    if(isset($url[2])){
+                       $controller->{$url[1]}($url[2]);
+                    }else{
+                        $controller->{$url[1]}();
+                    }
+                }else{
+                    require_once 'controllers/error.php';
+                    $controller = new Error();
+                    $controller->index();
+                    return false;
+                }
+            }else{
+                $controller->index();
+            }
+
+        }
+
+/*        if (isset($url[2])) {
+            if (method_exists($controller, $url[1])){
                 $controller->{$url[1]}($url[2]);
             }else{
                 echo 'errrrrrr';
@@ -40,7 +61,7 @@ class Bootstrap
             }else{
                 $controller->index();
             }
-        }
+        }*/
 
     }
 }

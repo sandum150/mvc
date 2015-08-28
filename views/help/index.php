@@ -1,1 +1,2 @@
-    help page...
+    help page...<br/>
+<?php echo $this->blah; ?>
