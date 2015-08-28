@@ -8,7 +8,7 @@ class Bootstrap
         $url = rtrim($url, '/');
         $url = explode('/', $url);
 
-        print_r($url);
+//        print_r($url);
 
         if (empty($url[0])){
             require_once 'controllers/index.php';
@@ -28,8 +28,11 @@ class Bootstrap
         }
 
         $controller = new  $url[0];
+        $controller->loadModel($url[0]);
+
 //calling methods
-        if (isset($url[0])){
+//        sasha way
+        /*if (isset($url[0])){
             if(isset($url[1])){
                 if(method_exists($controller, $url[1])){
                     if(isset($url[2])){
@@ -47,21 +50,30 @@ class Bootstrap
                 $controller->index();
             }
 
-        }
+        }*/
 
-/*        if (isset($url[2])) {
+        if (isset($url[2])) {
             if (method_exists($controller, $url[1])){
                 $controller->{$url[1]}($url[2]);
             }else{
-                echo 'errrrrrr';
+                $this->error();
             }
         } else {
             if (isset($url[1])) {
-                $controller->{$url[1]}();
+                if (method_exists($controller, $url[1])){
+                    $controller->{$url[1]}();
+                }else{
+                    $this->error();
+                }
             }else{
                 $controller->index();
             }
-        }*/
-
+        };
+    }
+    function error(){
+        require 'controllers/error.php';
+        $controller = new Error();
+        $controller->index();
+        return false;
     }
 }

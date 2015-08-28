@@ -9,9 +9,9 @@ class Help extends Controller{
     }
 
     public function other($arg = false){
-        require 'models/help_model.php';
-        $model = new Help_Model();
-        $this->view->blah = $model->blah();
+//        require 'models/help_model.php';
+//        $model = new Help_Model();
+        $this->view->blah = $this->model->blah();
         $this->view->render('help/index');
     }
 }
