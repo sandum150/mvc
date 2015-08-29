@@ -11,6 +11,7 @@ class Dashboard extends Controller{
             exit;
         }
         $this->view->js = array('dashboard/js/default.js');
+
     }
 
     function index(){
@@ -19,7 +20,7 @@ class Dashboard extends Controller{
 
     function logout(){
         Session::destroy();
-        header('location: ../login');
+        header('location: '. URL .'login');
         exit;
     }
 
