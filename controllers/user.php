@@ -26,7 +26,7 @@ class User extends Controller{
         $data = array();
 
         $data['login'] = $_POST['login'];
-        $data['password'] = md5($_POST['password']);
+        $data['password'] = $_POST['password'];
         $data['role'] = $_POST['role'];
 
         $this->model->create($data);
@@ -48,7 +48,7 @@ class User extends Controller{
 
         $data['id'] = $id;
         $data['login'] = $_POST['login'];
-        $data['password'] = md5($_POST['password']);
+        $data['password'] = $_POST['password'];
         $data['role'] = $_POST['role'];
 
 

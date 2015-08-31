@@ -4,7 +4,6 @@
             parent::__construct();
         }
         function index(){
-            echo 'INSODE INDEX INDEX';
             $this->view->render('index/index');
         }
 
